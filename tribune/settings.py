@@ -170,7 +170,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-# STATIC_ROOT= os.path.join(PROJECT_DIR,'staticfiles/')
+STATIC_ROOT= os.path.join(PROJECT_DIR,'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT,'static/'),
 )
