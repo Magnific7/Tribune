@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+from decouple import config
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
@@ -32,6 +32,7 @@ if config('MODE')=="dev":
        }
        
    }
+
 # production
 else:
    DATABASES = {
@@ -58,7 +59,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-$+7ng$dndt@^dwwh6t_=rg+7$=#1p%r&k)vdke)_6k2)i)$f4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -68,6 +69,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'bootstrap3',
+    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -179,3 +181,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+# Email configurations remember to install python-decouple
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+LOGIN_REDIRECT_URL = "profile"
