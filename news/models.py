@@ -45,3 +45,8 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to='picture/', null=True, blank=True, default= 0)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, null=True)
+
+class MoringaMerch(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField()
+    price = models.DecimalField(decimal_places=2, max_digits=20)
